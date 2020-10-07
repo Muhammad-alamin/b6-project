@@ -27,34 +27,7 @@
             <!-- form start -->
             <form action="{{route('category.store')}}"  method="post">
                 @csrf
-                <div class="card-body">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" name="name" class="form-control" id="name" value="{{old('name')}}" placeholder="Enter Category Name">
-                        @error('name')<i class="text-danger">{{$message}}</i>@enderror
-                    </div>
-
-                    <div class="form-group">
-                        <label for="description">Description</label>
-                        <textarea type="text" name="description" class="form-control" id="description" placeholder="Enter Category Description">{{old('description')}}</textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Status</label>
-                        <div class="form-check">
-                            <input type="radio" @if(old('status') && old('status') == 'active') checked @endif name="status" class="form-check-input" value="active" id="active">
-                            <label  for="active">Active</label>
-                        </div>
-
-                        <div class="form-check">
-                            <input type="radio" @if(old('status') && old('status') == 'inactive') checked @endif name="status" class="form-check-input" value="inactive" id="inactive">
-                            <label for="inactive">Inactive</label>
-                        </div>
-                        @error('status')<i class="text-danger">{{ $message }}</i>@enderror
-                    </div>
-
-                </div>
-                <!-- /.card-body -->
+                @include('admin.category._form')
 
                 <div class="card-footer">
                     <button type="submit" class="btn btn-success">Submit</button>
