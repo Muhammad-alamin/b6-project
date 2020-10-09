@@ -52,6 +52,7 @@ class CategoryController extends Controller
         $category->description = $request->description;
         $category->status = $request->status;
         $category->save();
+        session()->flash('success', 'Category Created Successfully');
         return redirect()->route('category.index');
     }
 
@@ -98,6 +99,7 @@ class CategoryController extends Controller
         $category->description = $request->description;
         $category->status = $request->status;
         $category->save();
+        session()->flash('success', 'Category Updated Successfully');
         return redirect()->route('category.index');
     }
 
@@ -110,6 +112,7 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         Category::destroy($id);
+        session()->flash('success', 'Category deleted Successfully');
         return redirect()->route('category.index');
     }
 }
