@@ -58,6 +58,33 @@
                         </li>
                     </ul>
                 </li>
+
+                <!--Product _leftNav Start-->
+
+                <li class="nav-item has-treeview @if(request()->routeIs('product.index') || request()->routeIs('product.create') || request()->routeIs('product.edit')) menu-open @endif">
+                    <a href="#" class="nav-link >
+                        <i class="nav-icon fas fa-copy"></i>
+                    <p>
+                        Product
+                        <i class="fas fa-angle-left right"></i>
+
+                    </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('product.create')}}" class="nav-link @if(request()->routeIs('product.create')) active @endif ">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add New Product</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('product.index')}}" class="nav-link @if(request()->routeIs('product.index')) active @endif " ">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Product List</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
