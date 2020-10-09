@@ -19,4 +19,6 @@ Route::get('/', function () {
 
 Route::get('admin/dashboard',function (){
     return view('admin.dashboard');
-});
+})->name('admin.dashboard');
+
+Route::resource('admin/category','Admin\CategoryController');

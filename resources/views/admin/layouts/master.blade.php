@@ -10,7 +10,14 @@
 
     @include('admin.layouts._leftNav')
 
-    @include('admin.layouts._content')
+    <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+
+            @yield('content')
+
+        </div>
+        <!-- /.content-wrapper -->
+
 
     @include('admin.layouts._footer')
     <!-- Control Sidebar -->
