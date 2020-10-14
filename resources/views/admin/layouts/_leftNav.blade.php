@@ -85,6 +85,34 @@
                         </li>
                     </ul>
                 </li>
+
+                <!--User _leftNav Start-->
+
+                <li class="nav-item has-treeview @if(request()->routeIs('user.index') || request()->routeIs('user.create') || request()->routeIs('user.edit')) menu-open @endif">
+                    <a href="#" class="nav-link >
+                        <i class="nav-icon fas fa-copy"></i>
+                    <p>
+                        user
+                        <i class="fas fa-angle-left right"></i>
+
+                    </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('user.create')}}" class="nav-link @if(request()->routeIs('user.create')) active @endif ">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add New user</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('user.index')}}" class="nav-link @if(request()->routeIs('user.index')) active @endif " ">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>user List</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
