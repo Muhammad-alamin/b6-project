@@ -50,6 +50,7 @@
                                             <th>ID</th>
                                             <th>Name</th>
                                             <th>Description</th>
+                                            <th>Image</th>
                                             <th>Status</th>
 
                                         </tr>
@@ -60,6 +61,9 @@
                                             <td>{{$products->firstItem() + $key}}</td>
                                             <td>{{$product->name}}</td>
                                             <td>{{$product->description}}</td>
+                                            <td>
+                                                <img src="{{asset($product->image)}}" style="height: 100px; width: 100px;"  >
+                                            </td>
                                             <td>{{$product->status}}</td>
                                             <td> <a class="btn btn-primary btn-xs" href="{{route('product.edit',$product->id)}}">Edit</a> </td>
                                             <td>

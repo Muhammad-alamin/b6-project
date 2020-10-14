@@ -45,7 +45,9 @@ class ProductController extends Controller
             'category_id'   => 'required',
             'name'          => 'required',
             'price'         => 'required',
-            'status'        => 'required'
+            'stock'        =>   'required',
+            'status'        => 'required',
+            'image'         =>  'mimes:jpeg,png'
         ]);
 
         $product = new Product();
@@ -56,10 +58,26 @@ class ProductController extends Controller
         $product->color = $request->color;
         $product->size = $request->size;
         $product->price = $request->price;
-        $product->image = $request->image;
         $product->status = $request->status;
         $product->stock = $request->stock;
+
+
+        if ($request->hasFile('image')){
+
+            $path = 'images/product';
+            $img = $request->file('image');
+            $file_name = rand(0000,9999).'-'.$img->getFilename().'.'.$img->getClientOriginalExtension();
+            $img->move($path,$file_name);
+
+            if ($product->image != null && file_exists($product->image)){
+                unlink($product->image);
+            }
+
+            $product->image = $path .'/'. $file_name;
+
+        }
         $product->save();
+
         session()->flash('success','Product Created Successfully');
         return redirect()->route('product.index');
     }
@@ -102,7 +120,9 @@ class ProductController extends Controller
             'category_id'   => 'required',
             'name'          => 'required',
             'price'         => 'required',
-            'status'        => 'required'
+            'stock'        =>   'required',
+            'image'         =>  'mimes:jpeg,png'
+
         ]);
 
         $product->category_id = $request->category_id;
@@ -111,9 +131,27 @@ class ProductController extends Controller
         $product->color = $request->color;
         $product->size = $request->size;
         $product->price = $request->price;
-        $product->image = $request->image;
         $product->status = $request->status;
         $product->stock = $request->stock;
+
+        if ($request->hasFile('image')){
+
+            $path = 'images/product';
+            $img = $request->file('image');
+            $file_name = rand(0000,9999).'-'.$img->getFilename().'.'.$img->getClientOriginalExtension();
+            $img->move($path,$file_name);
+
+
+            if ($product->image != null && file_exists($product->image)){
+                unlink($product->image);
+            }
+
+            $product->image = $path .'/'. $file_name;
+
+
+
+        }
+
         $product->save();
         session()->flash('success','Product Updated Successfully');
         return redirect()->route('product.index');
@@ -127,6 +165,9 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
+        if ($product->image != null && file_exists($product->image)){
+            unlink($product->image);
+        }
         $product->delete();
         session()->flash('success','Product Deleted Successfully');
         return redirect()->route('product.index');

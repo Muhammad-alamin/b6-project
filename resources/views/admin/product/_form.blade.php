@@ -5,7 +5,7 @@
             <option value="category_id">Select Category</option>
                 @foreach($categories as $category)
 
-                <option @if(old('category_id',isset($product)?$category->id:null)  == $category->id) selected @endif value="{{$category->id}}">{{$category->name}}</option>
+                <option @if(old('category_id',isset($product)?$product->category_id:null)  == $category->id) selected @endif value="{{$category->id}}">{{$category->name}}</option>
 
                 @endforeach
         </select>
@@ -47,13 +47,6 @@
         <input type="number" name="stock" class="form-control" id="stock" value="{{old('stock', isset($product)?$product->stock:null)}}" placeholder="Enter Product stock ">
         @error('stock')<i class="text-danger">{{$message}}</i>@enderror
     </div>
-
-    <div class="form-group">
-        <label for="image">Image</label>
-        <input type="file" name="image" class="form-control" id="image" value="{{old('image', isset($product)?$product->image:null)}}" placeholder="Upload Product image ">
-        @error('image')<i class="text-danger">{{$message}}</i>@enderror
-    </div>
-
     <div class="form-group">
         <label>Status</label>
         <div class="form-check">
@@ -67,6 +60,14 @@
         </div>
         @error('status')<i class="text-danger">{{ $message }}</i>@enderror
     </div>
+    <div class="form-group" >
+        <label for="image">Image</label>
+        <input type="file" name="image" class="form-control" id="image" value="{{old('image', isset($product)?$product->image:null)}}" placeholder="Upload Product image ">
+        @error('image')<i class="text-danger">{{$message}}</i>@enderror
+    </div>
+    @if (isset($product))
+        <img src="{{asset($product->image)}}" width="150px;">
+    @endif
 
 </div>
 <!-- /.card-body -->
