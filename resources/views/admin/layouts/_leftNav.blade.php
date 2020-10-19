@@ -92,7 +92,7 @@
                     <a href="#" class="nav-link >
                         <i class="nav-icon fas fa-copy"></i>
                     <p>
-                        user
+                        User
                         <i class="fas fa-angle-left right"></i>
 
                     </p>
@@ -101,18 +101,17 @@
                         <li class="nav-item">
                             <a href="{{route('user.create')}}" class="nav-link @if(request()->routeIs('user.create')) active @endif ">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Add New user</p>
+                                <p>Add New User</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('user.index')}}" class="nav-link @if(request()->routeIs('user.index')) active @endif " ">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>user List</p>
+                            <p>User List</p>
                             </a>
                         </li>
                     </ul>
                 </li>
-
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
