@@ -47,6 +47,14 @@
         <input type="number" name="stock" class="form-control" id="stock" value="{{old('stock', isset($product)?$product->stock:null)}}" placeholder="Enter Product stock ">
         @error('stock')<i class="text-danger">{{$message}}</i>@enderror
     </div>
+
+    <div class="form-group">
+        <div class="form-check">
+            <input type="checkbox" @if(old('is_featured',isset($product)?$product->is_featured:null)  == 1 ) checked @endif name="is_featured" class="form-check-input" value="1" id="is_featured">
+            <label  for="is_featured">is_featured</label>
+        </div>
+    </div>
+
     <div class="form-group">
         <label>Status</label>
         <div class="form-check">
