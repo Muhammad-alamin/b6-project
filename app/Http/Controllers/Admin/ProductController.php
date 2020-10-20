@@ -141,12 +141,8 @@ class ProductController extends Controller
 
         if ($request->has('is_featured'))
         {
-
             $product->is_featured = $request->is_featured;
-
-
         }
-
         else
 
         {
