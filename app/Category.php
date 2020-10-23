@@ -13,4 +13,8 @@ class Category extends Model
     public static function findOrFail(int $id)
     {
     }
+
+    public function products(){
+        return $this->hasMany(Product::class);
+    }
 }

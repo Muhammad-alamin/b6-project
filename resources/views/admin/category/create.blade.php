@@ -25,7 +25,7 @@
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form action="{{route('category.store')}}"  method="post">
+            <form action="{{route('category.store')}}"  method="post" enctype="multipart/form-data">
                 @csrf
                 @include('admin.category._form')
 
