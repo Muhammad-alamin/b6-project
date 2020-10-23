@@ -103,31 +103,30 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="category-wrap ftco-animate img mb-4 d-flex align-items-end" style="background-image: url({{asset('assets/front/images/category-1.jpg')}});">
-                                <div class="text px-3 py-1">
-                                    <h2 class="mb-0"><a href="#">Fruits</a></h2>
-                                </div>
-                            </div>
-                            <div class="category-wrap ftco-animate img d-flex align-items-end" style="background-image: url({{asset('assets/front/images/category-2.jpg')}});">
-                                <div class="text px-3 py-1">
-                                    <h2 class="mb-0"><a href="#">Vegetables</a></h2>
-                                </div>
-                            </div>
+                            @foreach($featured_category as $id=>$category)
+                                @if($id < 2)
+                                    <div class="category-wrap ftco-animate img mb-4 d-flex align-items-end" style="background-image: url({{file_exists($category->image)?asset($category->image):asset('assets/front/images/No-image-available.png')}});">
+                                        <div class="text px-3 py-1">
+                                            <h2 class="mb-0"><a href="#">{{$category->name}}</a></h2>
+                                        </div>
+                                    </div>
+                                @endif
+                            @endforeach
                         </div>
                     </div>
                 </div>
 
                 <div class="col-md-4">
-                    <div class="category-wrap ftco-animate img mb-4 d-flex align-items-end" style="background-image: url({{asset('assets/front/images/category-3.jpg')}});">
-                        <div class="text px-3 py-1">
-                            <h2 class="mb-0"><a href="#">Juices</a></h2>
-                        </div>
-                    </div>
-                    <div class="category-wrap ftco-animate img d-flex align-items-end" style="background-image: url({{asset('assets/front/images/category-4.jpg')}});">
-                        <div class="text px-3 py-1">
-                            <h2 class="mb-0"><a href="#">Dried</a></h2>
-                        </div>
-                    </div>
+
+                    @foreach($featured_category as $id=> $category)
+                        @if($id > 1)
+                                <div class="category-wrap ftco-animate img mb-4 d-flex align-items-end" style="background-image: url({{file_exists($category->image)?asset($category->image):asset('assets/front/images/No-image-available.png')}});">
+                                    <div class="text px-3 py-1">
+                                        <h2 class="mb-0"><a href="#">{{$category->name}}</a></h2>
+                                    </div>
+                                </div>
+                        @endif
+                    @endforeach
                 </div>
             </div>
         </div>
