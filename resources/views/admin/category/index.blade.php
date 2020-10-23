@@ -50,6 +50,8 @@
                                             <th>ID</th>
                                             <th>Name</th>
                                             <th>Description</th>
+                                            <th>Image</th>
+                                            <th>is_featured</th>
                                             <th>Status</th>
 
                                         </tr>
@@ -60,10 +62,14 @@
                                             <td>{{$categories->firstItem() + $key}}</td>
                                             <td>{{$category->name}}</td>
                                             <td>{{$category->description}}</td>
+                                            <td>
+                                                <img src="{{asset($category->image)}}" style="height: 100px; width: 100px;"  >
+                                            </td>
+                                            <td>{{$category->is_featured?'Yes':'No'}}</td>
                                             <td>{{$category->status}}</td>
                                             <td> <a class="btn btn-primary btn-xs" href="{{route('category.edit',$category->id)}}">Edit</a> </td>
                                             <td>
-                                                <form action="{{route('category.destroy', $category->id)}}" method="post" >
+                                                <form action="{{route('category.destroy', $category->id)}}" method="post" enctype="multipart/form-data">
                                                     @csrf
                                                     @method('delete')
                                                     <button class="btn btn-danger btn-xs" onclick="return confirm('Are You Confirm To Delete')" >Delete</button>
