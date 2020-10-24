@@ -148,7 +148,7 @@
 
                 <div class="col-md-6 col-lg-3 ftco-animate">
                     <div class="product">
-                        <a href="#" class="img-prod"><img class="img-fluid" src="{{asset($product->image?$product->image:asset('assets/front/images/No-image-available.png'))}}" alt="Colorlib Template">
+                        <a href="{{route('front.product.details', $product->id)}}" class="img-prod"><img class="img-fluid" src="{{asset($product->image?$product->image:asset('assets/front/images/No-image-available.png'))}}" alt="Colorlib Template">
                             <span class="status">30%</span>
                             <div class="overlay"></div>
                         </a>
@@ -161,7 +161,7 @@
                             </div>
                             <div class="bottom-area d-flex px-3">
                                 <div class="m-auto d-flex">
-                                    <a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
+                                    <a href="{{route('front.product.details', $product->id)}}" class="add-to-cart d-flex justify-content-center align-items-center text-center">
                                         <span><i class="ion-ios-menu"></i></span>
                                     </a>
                                     <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">

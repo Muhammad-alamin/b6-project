@@ -61,7 +61,7 @@
                                         <tr>
                                             <td>{{$products->firstItem() + $key}}</td>
                                             <td>{{$product->name}}</td>
-                                            <td>{{$product->description}}</td>
+                                            <td><textarea class="form-control">{{$product->description}}</textarea></td>
                                             <td>
                                                 <img src="{{asset($product->image)}}" style="height: 100px; width: 100px;"  >
                                             </td>

@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/','Front\FrontController@home' )->name('front.home');
+Route::get('product/{id}','Front\FrontController@product_details' )->name('front.product.details');
 
 Route::middleware('auth')->group(function (){
 
