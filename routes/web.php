@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/','Front\FrontController@home' )->name('front.home');
 Route::get('product/{id}','Front\FrontController@product_details' )->name('front.product.details');
+Route::get('add-to-cart/{productId}','Front\CartController@addToCart' )->name('add.to.cart');
+Route::get('cart','Front\CartController@cart' )->name('cart');
+Route::get('remove-to-cart/{productId}','Front\CartController@removeFormCart' )->name('remove.to.cart');
 
 Route::middleware('auth')->group(function (){
 
