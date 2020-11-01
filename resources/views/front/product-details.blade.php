@@ -73,7 +73,7 @@
                             <p style="color: #000;">{{$product->stock}} Pcs available</p>
                         </div>
                     </div>
-                    <p><a href="cart.html" class="btn btn-black py-3 px-5">Add to Cart</a></p>
+                    <p><a href="{{route('add.to.cart', $product->id)}}" class="btn btn-black py-3 px-5">Add to Cart</a></p>
                 </div>
             </div>
         </div>
