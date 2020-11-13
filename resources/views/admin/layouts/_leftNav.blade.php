@@ -25,7 +25,7 @@
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
 
-                <li class="nav-item " >
+                <li class="nav-item">
                     <a href="{{route('admin.dashboard')}}" class="nav-link @if(request()->routeIs('admin.dashboard')) active @endif">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
@@ -34,6 +34,17 @@
                         </p>
                     </a>
                 </li>
+
+                <li class="nav-item">
+                    <a href="{{route('admin.index')}}" class="nav-link @if(request()->routeIs('admin.index')) active @endif">
+                        <i class="fas fa-cart-plus p-1"></i>
+                        <p>
+                            Order List
+
+                        </p>
+                    </a>
+                </li>
+
                 <li class="nav-item has-treeview @if(request()->routeIs('category.index') || request()->routeIs('category.create') || request()->routeIs('category.edit')) menu-open @endif">
                     <a href="#" class="nav-link >
                         <i class="nav-icon fas fa-copy"></i>
