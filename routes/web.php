@@ -22,6 +22,7 @@ Route::post('checkout','Front\CheckoutController@store' )->name('front.place.ord
 Route::get('order/success','Front\CheckoutController@success' )->name('front.order.success');
 Route::get('remove-to-cart/{productId}','Front\CartController@removeFormCart' )->name('remove.to.cart');
 
+
 Route::middleware('auth')->group(function (){
 
     Route::get('admin/dashboard',function (){
@@ -31,6 +32,9 @@ Route::middleware('auth')->group(function (){
     Route::resource('admin/category','Admin\CategoryController');
     Route::resource('admin/product','Admin\ProductController');
     Route::resource('admin/user','Admin\UserController');
+    Route::get('admin/orders','Admin\OrderController@index' )->name('admin.index');
+    Route::get('admin/order/details/{id}','Admin\OrderController@show' )->name('admin.order.show');
+    Route::put('admin/order/{id}/{status}','Admin\OrderController@change_status' )->name('admin.order.change.status');
 
 });
 
