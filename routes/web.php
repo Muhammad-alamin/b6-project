@@ -21,6 +21,11 @@ Route::get('checkout','Front\CheckoutController@checkout' )->name('front.checkou
 Route::post('checkout','Front\CheckoutController@store' )->name('front.place.order');
 Route::get('order/success','Front\CheckoutController@success' )->name('front.order.success');
 Route::get('remove-to-cart/{productId}','Front\CartController@removeFormCart' )->name('remove.to.cart');
+Route::get('order/{id}/payment','Front\PaymentController@index' )->name('front.order.payment');
+Route::post('payments/success','Front\PaymentController@success' )->name('front.order.payment.success');
+Route::post('payments/fail','Front\PaymentController@fail' )->name('front.order.payment.fail');
+Route::post('payments/cancel','Front\PaymentController@cancel' )->name('front.order.payment.cancel');
+
 
 
 Route::middleware('auth')->group(function (){

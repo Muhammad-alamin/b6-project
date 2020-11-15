@@ -43,6 +43,9 @@ class CheckoutController extends Controller
         $order->email = $request->email;
         $order->payment_method = $request->payment_method;
         $order->total_amount = 0;
+        if ($request->payment_method != 'card'){
+            $order->status = Order::STATUS_PROCESSING;
+        }
         $order->save();
 
         foreach (session('cart') as $product_id=>$cart){
@@ -56,6 +59,13 @@ class CheckoutController extends Controller
             $order->total_amount += $cart['price'] * $cart['quantity'];
         }
         $order->save();
-        return redirect()->route('front.order.success');
+        session()->remove('cart');
+        if ($order->status == Order::STATUS_PROCESSING){
+            return redirect()->route('front.order.success');
+        }
+        else{
+            return redirect()->route('front.order.payment', $order->id);
+        }
+
     }
 }
