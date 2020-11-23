@@ -5,17 +5,23 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use App\Library\SslCommerz\SslCommerzNotification;
 use App\Order;
+use App\Transection;
 use Illuminate\Http\Request;
 
 class PaymentController extends Controller
 {
     public function index($order_id){
+        $data['tittle'] = 'Pay Now';
+        $data['order'] = Order::findOrFail($order_id);
+
+        return view('front.pay_now',$data);
+    }
+    public function pay_now($order_id){
         $order = Order::with(['order_details'=>function($query){
             return $query->with(['product'=>function($query2){
                 return $query2->with('category');
             }]);
         }])->findOrFail($order_id);
-
 
 
             # Here you have to receive all the order data to initate the payment.
@@ -60,6 +66,12 @@ class PaymentController extends Controller
             $post_data['value_c'] = "ref003";
             $post_data['value_d'] = "ref004";
 
+        $transaction = new Transection();
+        $transaction->transction_id = $post_data['tran_id'];
+        $transaction->order_id = $order->id;
+        $transaction->amount = $order->total_amount;
+        $transaction->request = json_encode($post_data);
+        $transaction->save();
 
             $sslc = new SslCommerzNotification();
             # initiate(Transaction Data , false: Redirect to SSLCOMMERZ gateway/ true: Show all the Payement gateway here )

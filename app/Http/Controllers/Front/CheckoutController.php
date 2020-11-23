@@ -64,7 +64,7 @@ class CheckoutController extends Controller
             return redirect()->route('front.order.success');
         }
         else{
-            return redirect()->route('front.order.payment', $order->id);
+            return redirect()->route('front.order.index', $order->id);
         }
 
     }

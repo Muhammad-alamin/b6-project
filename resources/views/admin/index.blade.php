@@ -54,14 +54,13 @@
                         <div class="card-header">
                             <h3 class="card-title">Order List</h3>
 
-                            <div class="card-tools">
+                            <div class="card-tools ">
                                 <div class="input-group input-group-sm" style="width: 150px;">
-                                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-
-                                    <div class="input-group-append">
-                                        <button type="submit" class="btn btn-default">
-                                            <i class="fas fa-search"></i>
-                                        </button>
+                                    <div class="input-group-append pl-5">
+                                        <a class="btn btn-warning " href="{{route('admin.order.export','all')}}" style="">Export</a>
+                                    </div>
+                                    <div>
+                                        <a class="btn btn-info " href="{{route('admin.order.export',\App\Order::STATUS_PENDING)}}" style="">Pending Order</a>
                                     </div>
                                 </div>
                             </div>

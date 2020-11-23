@@ -21,7 +21,8 @@ Route::get('checkout','Front\CheckoutController@checkout' )->name('front.checkou
 Route::post('checkout','Front\CheckoutController@store' )->name('front.place.order');
 Route::get('order/success','Front\CheckoutController@success' )->name('front.order.success');
 Route::get('remove-to-cart/{productId}','Front\CartController@removeFormCart' )->name('remove.to.cart');
-Route::get('order/{id}/payment','Front\PaymentController@index' )->name('front.order.payment');
+Route::get('order/{id}/payment','Front\PaymentController@index' )->name('front.order.index');
+Route::get('order/{id}/pay-now','Front\PaymentController@pay_now' )->name('front.order.pay_now');
 Route::post('payments/success','Front\PaymentController@success' )->name('front.order.payment.success');
 Route::post('payments/fail','Front\PaymentController@fail' )->name('front.order.payment.fail');
 Route::post('payments/cancel','Front\PaymentController@cancel' )->name('front.order.payment.cancel');
@@ -40,6 +41,7 @@ Route::middleware('auth')->group(function (){
     Route::get('admin/orders','Admin\OrderController@index' )->name('admin.index');
     Route::get('admin/order/details/{id}','Admin\OrderController@show' )->name('admin.order.show');
     Route::put('admin/order/{id}/{status}','Admin\OrderController@change_status' )->name('admin.order.change.status');
+    Route::get('admin/orders/export/{status}', 'Admin\OrderController@export')->name('admin.order.export');
 
 });
 
