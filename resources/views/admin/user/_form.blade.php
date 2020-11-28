@@ -36,6 +36,13 @@
     </div>
 
     <div class="form-group">
+        <div class="form-check">
+            <input type="checkbox" @if(old('isAdmin',isset($user)?$user->isAdmin:null)  == 1 ) checked @endif name="isAdmin" class="form-check-input" value="1" id="isAdmin">
+            <label  for="isAdmin">isAdmin</label>
+        </div>
+    </div>
+
+    <div class="form-group">
         <label>Status</label>
         <div class="form-check">
             <input type="radio" @if(old('status',isset($user)?$user->status:null)  == 'Active') checked @endif name="status" class="form-check-input" value="active" id="active">

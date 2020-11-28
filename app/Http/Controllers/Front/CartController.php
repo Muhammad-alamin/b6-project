@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\View\View;
 use MongoDB\Driver\Session;
 use phpDocumentor\Reflection\DocBlock\Tags\See;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CartController extends Controller
 {
@@ -35,7 +36,7 @@ class CartController extends Controller
         }
 
         session()->put('cart',$cart);
-
+        Alert::success('Success', 'Product is added into your cart');
         return redirect()->back();
     }
 

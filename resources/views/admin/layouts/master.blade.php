@@ -27,6 +27,7 @@
     <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
+    @include('sweetalert::alert')
 
     @include('admin.layouts._jsScript')
 

@@ -15,7 +15,7 @@
                 <img src="{{asset('assets/admin/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Alexander Pierce</a>
+                <a href="#" class="d-block">{{ Auth::user()->name }}</a>
             </div>
         </div>
 
@@ -34,7 +34,7 @@
                         </p>
                     </a>
                 </li>
-
+                @if(auth()->user()->isAdmin)
                 <li class="nav-item">
                     <a href="{{route('admin.index')}}" class="nav-link @if(request()->routeIs('admin.index')) active @endif">
                         <i class="fas fa-cart-plus p-1"></i>
@@ -45,6 +45,17 @@
                     </a>
                 </li>
 
+                    <li class="nav-item">
+                        <a href="{{route('admin.contact.index')}}" class="nav-link @if(request()->routeIs('admin.contact.index')) active @endif">
+                            <i class="fas fa-address-book p-1"></i>
+                            <p>
+                                Contact List
+
+                            </p>
+                        </a>
+                    </li>
+
+                @endif
                 <li class="nav-item has-treeview @if(request()->routeIs('category.index') || request()->routeIs('category.create') || request()->routeIs('category.edit')) menu-open @endif">
                     <a href="#" class="nav-link >
                         <i class="nav-icon fas fa-copy"></i>

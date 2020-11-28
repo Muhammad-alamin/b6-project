@@ -4,9 +4,12 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Library\SslCommerz\SslCommerzNotification;
+use App\Mail\PaymentSuccess;
 use App\Order;
 use App\Transection;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PaymentController extends Controller
 {
@@ -85,10 +88,15 @@ class PaymentController extends Controller
         $order->payment_method = Order::PAYMENT_METHOD_CARD;
         $order->payment_status = Order::PAYMENT_STATUS_PAID;
         $order->save();
-        return redirect()->route('front.order.success');
+        if ($order->payment_status == Order::PAYMENT_STATUS_PAID){
+            Mail::to($order->email)->send(new PaymentSuccess($order));
+        }
+        Alert::success('Success', 'Order Placed successfully');
+        return redirect()->route('front.home');
     }
     public function fail (){
-        return view('front.fail');
+        Alert::error('Payment Processing Failed', 'Please Try Again');
+        return redirect()->route('front.home');
     }
     public function cancel (){
         return view('front.cancel');
