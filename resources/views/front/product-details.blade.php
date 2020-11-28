@@ -16,6 +16,11 @@
     <section class="ftco-section">
         <div class="container">
             <div class="row">
+                @if(session('success'))
+                    <div class="alert alert-success">
+                        {{session()->get('success')}}
+                    </div>
+                @endif
                 <div class="col-lg-6 mb-5 ftco-animate">
                     <a href="{{file_exists($product->image)?asset($product->image):asset('assets/front/images/No-image-available.png')}}" class="image-popup"><img src="{{file_exists($product->image)?asset($product->image):asset('assets/front/images/No-image-available.png')}}" class="img-fluid" alt="Colorlib Template"></a>
                 </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CategoryController extends Controller
 {
@@ -71,7 +72,7 @@ class CategoryController extends Controller
 
 
         $category->save();
-        session()->flash('success', 'Category Created Successfully');
+        Alert::success('Success', 'Category Created successfully');
         return redirect()->route('category.index');
     }
 
@@ -152,7 +153,7 @@ class CategoryController extends Controller
         }
 
         $category->save();
-        session()->flash('success', 'Category Updated Successfully');
+        Alert::success('Updated', 'Category has been successfully updated');
         return redirect()->route('category.index');
     }
 

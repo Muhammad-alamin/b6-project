@@ -11,6 +11,7 @@ use App\Exports\OrdersExport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class OrderController extends Controller
 {
@@ -63,7 +64,7 @@ class OrderController extends Controller
        if($order_status == Order::STATUS_CANCELED){
            Mail::to($order->email)->send(new OrderCanceled($order));
        }
-       session()->flash('success','Order Status Changed Successfully');
+       Alert::success('Success', 'Order Status Changed Successfully');
        return redirect()->back();
 
    }

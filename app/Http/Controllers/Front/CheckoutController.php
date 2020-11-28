@@ -3,18 +3,17 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Mail\PaymentSuccess;
 use App\Order;
 use App\OrderDetail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CheckoutController extends Controller
 {
     public function checkout(){
         return view('front.checkout');
-    }
-
-    public function success(){
-        return view('front.success');
     }
 
     public function store(Request $request){
@@ -61,7 +60,10 @@ class CheckoutController extends Controller
         $order->save();
         session()->remove('cart');
         if ($order->status == Order::STATUS_PROCESSING){
-            return redirect()->route('front.order.success');
+            Mail::to($order->email)->send(new PaymentSuccess($order));
+            Alert::success('Success', 'Order Placed successfully');
+            return redirect()->route('front.home');
+
         }
         else{
             return redirect()->route('front.order.index', $order->id);

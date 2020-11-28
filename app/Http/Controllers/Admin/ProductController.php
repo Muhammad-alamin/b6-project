@@ -6,6 +6,7 @@ use App\Category;
 use App\Http\Controllers\Controller;
 use App\Product;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ProductController extends Controller
 {
@@ -83,7 +84,7 @@ class ProductController extends Controller
         }
         $product->save();
 
-        session()->flash('success','Product Created Successfully');
+        Alert::success('Success', 'Product Created successfully');
         return redirect()->route('product.index');
     }
 
@@ -168,7 +169,7 @@ class ProductController extends Controller
         }
 
         $product->save();
-        session()->flash('success','Product Updated Successfully');
+        Alert::success('Updated', 'Product has been successfully updated');
         return redirect()->route('product.index');
     }
 
@@ -184,7 +185,7 @@ class ProductController extends Controller
             unlink($product->image);
         }
         $product->delete();
-        session()->flash('success','Product Deleted Successfully');
+        Alert::success('Success', 'Product Deleted successfully');
         return redirect()->route('product.index');
     }
 }

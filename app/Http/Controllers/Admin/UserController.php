@@ -56,6 +56,10 @@ class UserController extends Controller
         $user->address = $request->address;
         $user->password = Hash::make($request->password);
         $user->status = $request->status;
+        if ($request->has('isAdmin')) {
+            $user->isAdmin = $request->isAdmin;
+        }
+
         $user->save();
         session()->flash('success','User Created Successfully');
         return redirect()->route('user.index');
@@ -111,6 +115,15 @@ class UserController extends Controller
         if ($request->has('password') && $request->password != null ){
 
             $user->password = Hash::make($request->password);
+        }
+        if ($request->has('isAdmin'))
+        {
+            $user->isAdmin = $request->isAdmin;
+        }
+        else
+
+        {
+            $user->isAdmin = 0 ;
         }
         $user->status = $request->status;
         $user->save();
