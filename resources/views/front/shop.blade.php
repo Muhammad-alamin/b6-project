@@ -15,6 +15,18 @@
 
     <section class="ftco-section">
         <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-10 mb-5 text-center">
+                    <ul class="product-category">
+                        <li><a href="{{route('front.product.shop')}}" class="active">All</a></li>
+                        <li><a href="{{route('front.product.shop')}}">Vegetables</a></li>
+                        <li><a href="{{route('front.product.shop')}}">Fruits</a></li>
+                        <li><a href="{{route('front.product.shop')}}">Juice</a></li>
+                        <li><a href="{{route('front.product.shop')}}">Dried</a></li>
+                    </ul>
+                </div>
+            </div>
+        <div class="container">
             <div class="row">
                 @foreach($products as $key=>$product)
                 <div class="col-md-6 col-lg-3 ftco-animate">
@@ -32,10 +44,10 @@
                             </div>
                             <div class="bottom-area d-flex px-3">
                                 <div class="m-auto d-flex">
-                                    <a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
+                                    <a href="{{route('front.product.details',$product->id)}}" class="add-to-cart d-flex justify-content-center align-items-center text-center">
                                         <span><i class="ion-ios-menu"></i></span>
                                     </a>
-                                    <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
+                                    <a href="{{route('add.to.cart',$product->id)}}" class="buy-now d-flex justify-content-center align-items-center mx-1">
                                         <span><i class="ion-ios-cart"></i></span>
                                     </a>
                                     <a href="#" class="heart d-flex justify-content-center align-items-center ">

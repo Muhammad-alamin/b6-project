@@ -19,6 +19,7 @@ Route::post('contact/store','Front\ContactController@store' )->name('front.conta
 Route::get('product/{id}','Front\FrontController@product_details' )->name('front.product.details');
 Route::get('shop','Front\FrontController@shop')->name('front.product.shop');
 Route::get('blog','Front\FrontController@blog')->name('front.blog');
+Route::get('about','Front\FrontController@about')->name('front.about');
 Route::get('add-to-cart/{productId}','Front\CartController@addToCart' )->name('add.to.cart');
 Route::get('cart','Front\CartController@cart' )->name('front.cart');
 Route::get('checkout','Front\CheckoutController@checkout' )->name('front.checkout');
