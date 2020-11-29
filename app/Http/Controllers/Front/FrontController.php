@@ -25,5 +25,8 @@ class FrontController extends Controller
         $data['products'] = Product::with('category')->paginate(4);
         return view('front.shop', $data);
     }
+    public function blog(){
+        return view('front.blog');
+    }
 
 }
