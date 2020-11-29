@@ -18,7 +18,7 @@
         <div class="container">
             <h3 class="text-center">Order Details</h3>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-12  table-responsive">
                     <table class="table table-bordered table-striped">
                         <tr>
                             <th>Order Id</th>
