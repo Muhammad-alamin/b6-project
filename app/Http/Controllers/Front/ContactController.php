@@ -28,8 +28,7 @@ class ContactController extends Controller
         $contact->subject = $request->subject;
         $contact->description = $request->description;
         $contact->save();
-
-        Alert::success('Thanks', 'Thanks For Your Support');
+        Alert::success('success','Thanks for your feedback');
         return redirect()->route('front.home');
     }
 }

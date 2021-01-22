@@ -43,7 +43,7 @@
                     <form action="{{route('front.contact.store')}}" class="bg-white p-5 contact-form" method="post">
                         @csrf
                         <div class="form-group">
-                            <input type="text" name="name" id="email" class="form-control" placeholder="Your Name">
+                            <input type="text" name="name" id="name" class="form-control" placeholder="Your Name">
                             @error('name') <i class="text-danger">{{$message}}</i> @enderror
                         </div>
                         <div class="form-group">

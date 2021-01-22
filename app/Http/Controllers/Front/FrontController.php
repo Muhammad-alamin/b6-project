@@ -11,7 +11,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 class FrontController extends Controller
 {
     public function home(){
-        $data['featured_product'] = Product::where('is_featured',1)->limit(8)->get();
+        $data['featured_product'] = Product::where('is_featured',1)->limit(12)->get();
         $data['featured_category'] = Category::where('is_featured',1)->limit(4)->get();
         return view('front.home',$data);
     }
@@ -22,7 +22,7 @@ class FrontController extends Controller
         return view('front.product-details', $data);
     }
     public function shop(){
-        $data['products'] = Product::with('category')->paginate(4);
+        $data['products'] = Product::with('category')->paginate(8);
         return view('front.shop', $data);
     }
     public function blog(){
