@@ -31,7 +31,7 @@ Route::post('payments/success','Front\PaymentController@success' )->name('front.
 Route::post('payments/fail','Front\PaymentController@fail' )->name('front.order.payment.fail');
 Route::post('payments/cancel','Front\PaymentController@cancel' )->name('front.order.payment.cancel');
 
-
+Route::resource('customers','Front\CustomerController');
 
 Route::middleware('auth')->group(function (){
 
